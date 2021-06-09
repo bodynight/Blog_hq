@@ -61,7 +61,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  x64-mingw32
+  ruby
 
 DEPENDENCIES
   activerecord
@@ -73,4 +73,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   2.2.17
+   1.16.1

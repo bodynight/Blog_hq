@@ -16,7 +16,7 @@ end
 
 before do
 	@posts = Post.order('created_at DESC')
-	@coments = Coment.order('created_at DESC')
+	#@coments = Coment.order('created_at DESC')
 end
 
 
@@ -42,14 +42,19 @@ end
 get '/details/:id' do
 	
 	@post = Post.find(params[:id])
-  	@coments = Coment.find_by post_id: params[:id]
+  	@coments = Coment.where post_id: params[:id]
   	erb :details
 end
 
 post '/details/:id' do
-	@c = Coment.new params[:coment]
+	@c = Coment.new params[:aaa]
 	@c.post_id = params[:id]
-
-
- 	redirect to ('/details/' + params[:id] )
+	if @c.save
+	 	 redirect to ('/details/' + params[:id] )
+	else 
+		@error = @c.errors.to_h.first.join(': ')
+		@post = Post.find(params[:id])
+		@coments = Coment.where post_id: params[:id]
+		 return erb :details
+	end 	 
 end
