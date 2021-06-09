@@ -1,0 +1,38 @@
+<h4>Детали поста</h4>
+<hr/>
+<p>
+	<%= @post.content %>
+	<br/>
+	<br/>
+	Добавлен в: <%= @post.created_at %>
+</p>
+<hr/>
+<h4>Коментарии:</h4>
+<br />
+
+
+<% if @coments %>
+	<% @coments.each do |coment| %>
+		
+		<p>
+			<%= coment.content %>
+			<br />
+			<span style="font-size: 75%; color: grey">Добавлен в: <%= coment.created_at %></span>
+		</p>
+
+		<hr/>
+
+	<% end %>
+<% end %>
+<p>
+<form action="/details/<%= @post.id %>" method="POST">
+
+  <div class="form-group">
+
+    <textarea class="form-control" name="coment[coment]" id="exampleFormControlTextarea1" rows="6" placeholder="Введите здесь текс коментария" ></textarea>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Добавить коментарий</button>
+</form>
+</p>

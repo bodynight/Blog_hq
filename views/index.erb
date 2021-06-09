@@ -1,0 +1,14 @@
+<h2>Последние посты:</h2>
+<br/>
+<% @posts.each do |post| %>
+<p>
+		<%= post.content %>
+		<br/>
+		<br/>
+		Добавлен в: <%= post.created_at %>
+		<br/>
+		<br/>
+		<a href="/details/<%= post.id %>">Coments</a>
+	</p>
+  <hr/>
+<% end %>
